@@ -18,7 +18,7 @@ class Eslint {
     this.plugins = (config && Array.isArray(config.plugins)) ? config.plugins : ['vue']
     const defaultConfig = {
       enforce: 'pre',
-      test: /\.(js|vue)$/,
+      test: /\.(js|vue|jsx)$/,
       exclude: /node_modules/,
       loader: 'eslint-loader',
       options: {}
@@ -35,7 +35,7 @@ class Eslint {
         : config.include
 
       config.test = Array.isArray(config.test)
-        ? (Regexp(RegExp(`\\.(${config.test.join('|')})$`)))
+        ? RegExp(`\\.(${config.test.join('|')})$`)
         : /\.(js|vue)$/
     }
 
